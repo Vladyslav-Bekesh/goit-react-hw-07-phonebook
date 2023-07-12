@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { handleFilterChange } from '../redux/slicers/filterSlice';
+import { handleFilterChange } from '../redux/slicers/filterSlicer';
 
 import * as selectors from '../redux/selectors';
 

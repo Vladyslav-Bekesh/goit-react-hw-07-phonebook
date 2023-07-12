@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { contactReducer } from './slicers/contactSlicer';
-import { filterReducer } from './slicers/filterSlice';
+import { contactReducer, filterReducer, isLoadingReducer } from './slicers';
 
 export const store = configureStore({
   reducer: {
     contacts: contactReducer,
     filter: filterReducer,
+    isLoading: isLoadingReducer,
   },
 });
