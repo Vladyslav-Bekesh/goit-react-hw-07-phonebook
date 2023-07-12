@@ -4,11 +4,13 @@ import Title from './Title';
 import ContactsList from './ContactsList';
 import Filter from './Filter';
 
+import * as selectors from '../redux/selectors'
+
 import { useSelector } from 'react-redux';
 
 function Contacts() {
-  const contacts = useSelector(state => state.contacts.contacts);
-  const filter = useSelector(state => state.filter.filter);
+  const contacts = useSelector(selectors.getContacts);
+  const filter = useSelector(selectors.getFilter);
 
   const makeFilteredContacts = () => {
     return contacts.filter(contact =>

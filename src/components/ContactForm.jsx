@@ -3,13 +3,14 @@ import { nanoid } from 'nanoid';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from '../redux/slicers/contactSlicer';
+import * as selectors from '../redux/selectors'
 
 function ContactForm() {
   const [number, setNumber] = useState('');
   const [name, setName] = useState('');
 
   const dispatch = useDispatch();
-  const contacts = useSelector(state => state.contacts.contacts);
+  const contacts = useSelector(selectors.getContacts);
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
