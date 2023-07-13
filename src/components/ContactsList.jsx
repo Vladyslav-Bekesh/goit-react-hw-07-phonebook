@@ -1,5 +1,5 @@
 import React from 'react';
-import { deleteContact } from '../redux/slicers/contactSlicer';
+import { deleteContact } from '../redux/operations';
 import { useDispatch } from 'react-redux';
 
 function ContactsList({ contacts }) {
