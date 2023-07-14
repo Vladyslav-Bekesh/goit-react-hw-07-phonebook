@@ -9,11 +9,11 @@ function ContactsList({ contacts }) {
     dispatch(deleteContact(id));
   };
 
-  return contacts.map(({ name, id, number }) => {
+  return contacts.map(({ name, id, phone }) => {
     return (
       <li key={id}>
         <span>
-          {name}: {number}
+          {name}: {phone}
         </span>
         <button
           type="button"

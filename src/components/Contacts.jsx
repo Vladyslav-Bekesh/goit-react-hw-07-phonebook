@@ -1,15 +1,22 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Title from './Title';
 import ContactsList from './ContactsList';
 import Filter from './Filter';
 
 import * as selectors from '../redux/selectors';
+import { fetchContacts } from '../redux/operations';
 
 function Contacts() {
   const contacts = useSelector(selectors.getContacts);
   const filter = useSelector(selectors.getFilter);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   const makeFilteredContacts = () => {
     return contacts.filter(contact =>

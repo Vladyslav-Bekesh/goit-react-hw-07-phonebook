@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { nanoid } from 'nanoid';
-
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from '../redux/operations';
-import * as selectors from '../redux/selectors'
+import * as selectors from '../redux/selectors';
 
 function ContactForm() {
   const [number, setNumber] = useState('');
@@ -11,7 +10,6 @@ function ContactForm() {
 
   const dispatch = useDispatch();
   const contacts = useSelector(selectors.getContacts);
-  console.log("🚀 ~ file: ContactForm.jsx:14 ~ ContactForm ~ contacts:", contacts)
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -40,15 +38,17 @@ function ContactForm() {
     setName('');
   };
 
-  const newContact = (name, number) => {
-    const isDuplicate = contacts.some(contact => contact.name === name);
+  const newContact = (name, phone) => {
+    const trimmedName = name.trim();
+    const trimmedPhone = phone.trim();
+    const isDuplicate = contacts.some(contact => contact.name === trimmedName);
 
     if (isDuplicate) {
       alert('This contact is already in contacts');
     } else {
       const newContact = {
-        name: name,
-        number: number,
+        name: trimmedName,
+        phone: trimmedPhone,
         id: nanoid(),
       };
 
@@ -58,11 +58,7 @@ function ContactForm() {
 
   return (
     <>
-      <form
-        onSubmit={event => {
-          handleSubmit(event);
-        }}
-      >
+      <form onSubmit={handleSubmit}>
         <label>
           Enter name
           <input
