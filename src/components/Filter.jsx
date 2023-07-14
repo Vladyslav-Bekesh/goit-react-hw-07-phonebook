@@ -4,8 +4,8 @@ import { handleFilterChange } from '../redux/slicers/filterSlicer';
 import * as selectors from '../redux/selectors';
 
 function Filter() {
-  const contacts = useSelector(selectors.getContacts);
-  const filter = useSelector(selectors.getFilter);
+  const contacts = useSelector(selectors.selectContacts);
+  const filter = useSelector(selectors.selectFilter);
 
   const dispatch = useDispatch();
 

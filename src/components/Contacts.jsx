@@ -9,10 +9,10 @@ import * as selectors from '../redux/selectors';
 import { fetchContacts } from '../redux/operations';
 
 function Contacts() {
-  const contacts = useSelector(selectors.getContacts);
-  const filter = useSelector(selectors.getFilter);
-  const error = useSelector(selectors.getError);
-  const isLoading = useSelector(selectors.getIsLoading);
+  const contacts = useSelector(selectors.selectContacts);
+  const filter = useSelector(selectors.selectFilter);
+  const error = useSelector(selectors.selectError);
+  const isLoading = useSelector(selectors.selectIsLoading);
 
   const dispatch = useDispatch();
 
