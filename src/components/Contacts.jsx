@@ -11,6 +11,8 @@ import { fetchContacts } from '../redux/operations';
 function Contacts() {
   const contacts = useSelector(selectors.getContacts);
   const filter = useSelector(selectors.getFilter);
+  const error = useSelector(selectors.getError);
+  const isLoading = useSelector(selectors.getIsLoading);
 
   const dispatch = useDispatch();
 
@@ -26,7 +28,11 @@ function Contacts() {
 
   return (
     <>
-      {contacts.length === 0 && <Title title="U haven't any friends" />}
+      {isLoading && <Title title={'Loading'} />}
+
+      {contacts.length === 0 && !error && !isLoading && (
+        <Title title="U haven't any friends" />
+      )}
       {contacts.length !== 0 && <Filter />}
 
       {contacts.length !== 0 && filter === '' && (
@@ -40,6 +46,8 @@ function Contacts() {
       {filter !== '' && makeFilteredContacts().length === 0 && (
         <Title title="No matches" />
       )}
+
+      {<Title title={error} />}
     </>
   );
 }
