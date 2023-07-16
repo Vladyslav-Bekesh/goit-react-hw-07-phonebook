@@ -47,7 +47,7 @@ function Contacts() {
         <Title title="No matches" />
       )}
 
-      {<Title title={error} />}
+      {error && <Title title={error} />}
     </>
   );
 }
